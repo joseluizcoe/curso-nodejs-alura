@@ -1,8 +1,11 @@
-FROM node:boron
+FROM node:alpine
 
 # APP DIR
 RUN mkdir -p /bff
 COPY . /bff
+
+# Mysql Storage
+RUN mkdir -p mysql-storage
 
 WORKDIR /bff
 
