@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/bff/app
+      - ./config:/bff/config
+    env_file:
+      - .env
+    depends_on:
+      - db
+    links:
+      - db:db
+
+  db:
+    image: mysql:5.7.18
+    ports:
+      - 3306:3306
+    volumes:
+      - ./storage:/var/lib/mysql
+    env_file:
+      - .env
+
+  dbadmin:
+    image: adminer
+    ports:
+      - 8080:8080
