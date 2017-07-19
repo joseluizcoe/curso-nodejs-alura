@@ -1,8 +1,10 @@
 var http = require('http');
 
+var env = process.env;
+
 var configuracoes = {
-    hostname: 'localhost',
-    port: 3000,
+    hostname: env.APP_HOST,
+    port: env.APP_PORT,
     path: '/produtos',
     method: 'post',
     headers: {
